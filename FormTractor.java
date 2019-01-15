@@ -1,12 +1,17 @@
 import java.awt.Color;
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
+
 public class FormTractor {
+	public static ITransport tractor;
+
 	private JFrame frame;
 	private JPanel panel;
 	private JButton buttonUp;
@@ -14,6 +19,7 @@ public class FormTractor {
 	private JButton buttonLeft;
 	private JButton buttonRight;
 	private JButton buttonCreate;
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -26,28 +32,32 @@ public class FormTractor {
 			}
 		});
 	}
+
 	public FormTractor() {
 		initialize();
 	}
+
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 900, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
 		panel = new PanelTractor();
 		panel.setBounds(0, 0, 884, 461);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
-		buttonCreate = new JButton("Áóëüäîçåð");
+		
+
+		buttonCreate = new JButton("Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð±ÑƒÐ»ÑŒÐ´Ð¾Ð·ÐµÑ€");
 		buttonCreate.setBounds(10, 5, 133, 23);
 		panel.add(buttonCreate);
 		buttonCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Random rnd = new Random();
-				PanelTractor.tractor = new Tractor(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.blue, Color.yellow, true, true);
+				tractor = new Tractor(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.blue, Color.yellow, true, true);
 				PanelTractor.initialization = true;
-				PanelTractor.tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), panel.getWidth(), panel.getHeight());
-
+				tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), panel.getWidth(), panel.getHeight());
 				panel.updateUI();
 			}
 		});
@@ -59,7 +69,7 @@ public class FormTractor {
 		buttonRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(PanelTractor.initialization) {
-					PanelTractor.tractor.MoveTransport(Direction.Right);
+					tractor.MoveTransport(Direction.Right);
 				}
 				panel.updateUI();
 			}
@@ -72,7 +82,7 @@ public class FormTractor {
 		buttonDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(PanelTractor.initialization) {
-					PanelTractor.tractor.MoveTransport(Direction.Down);
+					tractor.MoveTransport(Direction.Down);
 				}
 				panel.updateUI();
 			}
@@ -85,13 +95,12 @@ public class FormTractor {
 		buttonLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(PanelTractor.initialization) {
-					PanelTractor.tractor.MoveTransport(Direction.Left);
+					tractor.MoveTransport(Direction.Left);
 				}
 				panel.updateUI();
 			}
 		});
 		buttonLeft.setIcon(new ImageIcon("E:\\\\Java-lab1\\\\lab_Java\\\\Resources\\Left.png"));
-
 		
 		buttonUp = new JButton("");
 		buttonUp.setBounds(764, 330, 50, 50);
@@ -99,22 +108,20 @@ public class FormTractor {
 		buttonUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(PanelTractor.initialization) {
-					PanelTractor.tractor.MoveTransport(Direction.Up);
+					tractor.MoveTransport(Direction.Up);
 				}
 				panel.updateUI();
 			}
 		});
 		buttonUp.setIcon(new ImageIcon("E:\\\\Java-lab1\\\\lab_Java\\\\Resources\\Up.png"));
 		
-		JButton button = new JButton("Òðàêòîð");
+		JButton button = new JButton("Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ñ‚Ñ€Ð°ÐºÑ‚Ð¾Ñ€");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Random rnd = new Random();
-				PanelTractor.tractor = new TractorBase(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.blue);
-
+				tractor = new TractorBase(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.blue);
 				PanelTractor.initialization = true;
-				PanelTractor.tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), panel.getWidth(), panel.getHeight());
-
+				tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), panel.getWidth(), panel.getHeight());
 				panel.updateUI();
 			}
 		});

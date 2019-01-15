@@ -2,7 +2,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
 
-public class Tractor extends TractorBase{     
+public class Tractor extends TractorBase{
+        
     private Color dopColor;
     public Color getDopColor() {
     	return dopColor;
@@ -10,13 +11,15 @@ public class Tractor extends TractorBase{
     private void setDopColor(Color dopColor) {
     	this.dopColor = dopColor;
     }
+        
     private boolean frontEquipment;
     public boolean getFrontEquipment() {
     	return frontEquipment;
     }
     private void setFrontEquipment(boolean frontEquipment) {
     	this.frontEquipment = frontEquipment;
-    }     
+    }
+         
     private boolean backEquipment;
     public boolean getBackEquipment() {
     	return backEquipment;
@@ -24,17 +27,17 @@ public class Tractor extends TractorBase{
     private void setBackEquipment(boolean backEquipment) {
     	this.backEquipment = backEquipment;
     }
-    
     public Tractor(int maxSpeed, float weight, Color mainColor, Color dopColor, boolean frontEquipment, boolean backEquipment)   
     {
     	super(maxSpeed, weight, mainColor);
         setDopColor(dopColor);
         setFrontEquipment(frontEquipment);
-    }   
+    } 
+
     public void DrawTractor(Graphics g)
     {  	
-        /// Г®ГІГ°ГЁГ±Г®ГўГЄГ  ГЇГҐГ°ГҐГ¤Г­ГҐГЈГ® ГЄГ®ГўГёГ       
-        if (frontEquipment)
+    	 /// отрисовка переднего ковша      
+     if (frontEquipment)
         {
         	 g.setColor(Color.BLACK);
              g.drawLine( (int)_startPosX + 70, (int)_startPosY + 20, (int)_startPosX + 95, (int)_startPosY + 60);
