@@ -3,9 +3,9 @@ import java.awt.Graphics;
 
 public class TractorBase extends Vehicle {
         
-    protected int carWidth = 123;
+    protected int carWidth = 120;
         
-    protected int carHeight = 55;
+    protected int carHeight = 60;
 	
 	
     public TractorBase(int maxSpeed, float weight, Color mainColor)
