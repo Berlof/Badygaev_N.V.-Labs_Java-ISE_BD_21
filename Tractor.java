@@ -19,15 +19,7 @@ public class Tractor extends TractorBase{
     private void setFrontEquipment(boolean frontEquipment) {
     	this.frontEquipment = frontEquipment;
     }
-         
-    private boolean backEquipment;
-    public boolean getBackEquipment() {
-    	return backEquipment;
-    }
-    private void setBackEquipment(boolean backEquipment) {
-    	this.backEquipment = backEquipment;
-    }
-    public Tractor(int maxSpeed, float weight, Color mainColor, Color dopColor, boolean frontEquipment, boolean backEquipment)   
+    public Tractor(int maxSpeed, float weight, Color mainColor, Color dopColor, boolean frontEquipment)   
     {
     	super(maxSpeed, weight, mainColor);
         setDopColor(dopColor);
@@ -36,7 +28,7 @@ public class Tractor extends TractorBase{
 
     public void DrawTractor(Graphics g)
     {  	
-    	 /// отрисовка переднего ковша      
+    	 /// Г®ГІГ°ГЁГ±Г®ГўГЄГ  ГЇГҐГ°ГҐГ¤Г­ГҐГЈГ® ГЄГ®ГўГёГ       
      if (frontEquipment)
         {
         	 g.setColor(Color.BLACK);
