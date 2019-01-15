@@ -1,11 +1,13 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Parking<T extends ITransport> {
 
-    private ArrayList<T> _places;
-    
+    private HashMap<Integer, T> _places;
+
+    private int _maxCount;
+
     private int pictureWidth;
     public int getPictureWidth() {
     	return pictureWidth;
@@ -13,7 +15,6 @@ public class Parking<T extends ITransport> {
     public void setPictureWidth(int pictureWidth) {
     	this.pictureWidth = pictureWidth;
     }
-
     private int pictureHeight;
     public int getPictureHeight() {
     	return pictureHeight;
@@ -21,81 +22,73 @@ public class Parking<T extends ITransport> {
     public void setPictureHeight(int pictureHeight) {
     	this.pictureHeight = pictureHeight;
     }
-
     private int _placeSizeWidth = 210;
-    
-
     private int _placeSizeHeight = 80;
-
+    /// –ö–æ–Ω—Å—Ç—Ä—É–∫—Ç–æ—Ä
     public Parking(int sizes, int pictureWidth, int pictureHeight)
     {
-        _places = new ArrayList<T>();
+    	_maxCount = sizes;
+    	_places = new HashMap<Integer,T>();
         setPictureWidth( pictureWidth);
         setPictureHeight( pictureHeight);
-        for (int i = 0; i < sizes; i++)
-        {
-            _places.add(null);
-        }
     }
-// œÂÂ„ÛÁÍ‡ ÓÔÂ‡ÚÓ‡ Ò‡‚ÌÂÌËˇ
+    /// –ü–µ—Ä–µ–≥—Ä—É–∑–∫–∞ –æ–ø–µ—Ä–∞—Ç–æ—Ä–∞ —Å–ª–æ–∂–µ–Ω–∏—è
     public int Add(T car)
     {
-        for (int i = 0; i < _places.size(); i++)
+    	if(_places.size() == _maxCount)
+        {
+            return -1;
+        }
+    	
+        for (int i = 0; i < _maxCount; i++)
         {
             if (CheckFreePlace(i))
             {
-                _places.add(i, car);
+                _places.put(i, car);
                 _places.get(i).SetPosition(5 + i / 5 * _placeSizeWidth + 5, i % 5 * _placeSizeHeight + 15, getPictureWidth(), getPictureHeight());
                 return i;
             }
         }
         return -1;
     }
-//œÂÂ„ÛÁÍ‡ ÓÔÂ‡ÚÓÓ‚ ‚˚˜ËÚ‡ÌËˇ
     public T Remove(int index)
     {
-        if (index < 0 || index > _places.size())
+        if (index < 0 || index > _maxCount)
         {
             return null;
         }
         if (!CheckFreePlace(index))
         {
             T car = _places.get(index);
-            _places.set(index, null);
+            _places.remove(index);
             return car;
         }
         return null;
     }
-//œÓ‚ÂÍ‡
     private boolean CheckFreePlace(int index)
     {
-        return _places.get(index) == null;
+    	return !_places.containsKey(index);
     }
-
     public void Draw(Graphics g)
     {
         DrawMarking(g);
-        for (int i = 0; i < _places.size(); i++)
+        Object[] keys = _places.keySet().toArray();
+        for (int i = 0; i < keys.length; i++)
         {
-            if (!CheckFreePlace(i))
-            {
-                
-                _places.get(i).DrawTractor(g);
-            }
+            _places.get(keys[i]).DrawTractor(g);
         }
     }
-
     private void DrawMarking(Graphics g)
     {
     	g.setColor(Color.BLACK);
-        
-        g.drawRect( 0, 0, (_places.size() / 5) * _placeSizeWidth, 480);
-        for (int i = 0; i < _places.size() / 5; i++)
+        //–≥—Ä–∞–Ω–∏—Ü—ã –ø—Ä–∞–∫–æ–≤–∫–∏
+        g.drawRect( 0, 0, (_maxCount / 5) * _placeSizeWidth, 480);
+        for (int i = 0; i < _maxCount / 5; i++)
         {
-            
+            //–æ—Ç—Ä–∏—Å–æ–≤—ã–≤–∞–µ–º, –ø–æ 5 –º–µ—Å—Ç –Ω–∞ –ª–∏–Ω–∏–∏
             for (int j = 0; j < 6; ++j)
             {
-                
+                //–ª–∏–Ω–∏—è —Ä–∞–º–∑–µ—Ç–∫–∏ –º–µ—Å—Ç–∞
                 g.drawLine( i * _placeSizeWidth, j * _placeSizeHeight, i * _placeSizeWidth + 110, j * _placeSizeHeight);
             }
             g.drawLine( i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);

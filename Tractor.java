@@ -36,7 +36,7 @@ public class Tractor extends TractorBase{
 
     public void DrawTractor(Graphics g)
     {  	
-    	 /// отрисовка переднего ковша      
+    	 /// отрисовка переднего ковша     
      if (frontEquipment)
         {
         	 g.setColor(Color.BLACK);
