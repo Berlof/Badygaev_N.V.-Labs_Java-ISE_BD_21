@@ -30,11 +30,10 @@ public class Tractor extends TractorBase{
     	super(maxSpeed, weight, mainColor);
         setDopColor(dopColor);
         setFrontEquipment(frontEquipment);
-        setBackEquipment(backEquipment);
     }   
     public void DrawTractor(Graphics g)
     {  	
-        /// отрисовка переднего ковша      
+        /// Г®ГІГ°ГЁГ±Г®ГўГЄГ  ГЇГҐГ°ГҐГ¤Г­ГҐГЈГ® ГЄГ®ГўГёГ       
         if (frontEquipment)
         {
         	 g.setColor(Color.BLACK);
