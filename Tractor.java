@@ -17,15 +17,7 @@ public class Tractor extends TractorBase{
     private void setFrontEquipment(boolean frontEquipment) {
     	this.frontEquipment = frontEquipment;
     }     
-    private boolean backEquipment;
-    public boolean getBackEquipment() {
-    	return backEquipment;
-    }
-    private void setBackEquipment(boolean backEquipment) {
-    	this.backEquipment = backEquipment;
-    }
-    
-    public Tractor(int maxSpeed, float weight, Color mainColor, Color dopColor, boolean frontEquipment, boolean backEquipment)   
+    public Tractor(int maxSpeed, float weight, Color mainColor, Color dopColor, boolean frontEquipment)   
     {
     	super(maxSpeed, weight, mainColor);
         setDopColor(dopColor);
