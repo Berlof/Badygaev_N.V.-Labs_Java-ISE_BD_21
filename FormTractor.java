@@ -49,7 +49,7 @@ public class FormTractor {
 		panel.setLayout(null);
 		
 
-		buttonCreate = new JButton("РЎРѕР·РґР°С‚СЊ Р±СѓР»СЊРґРѕР·РµСЂ");
+		buttonCreate = new JButton("Создать бульдозер");
 		buttonCreate.setBounds(10, 5, 133, 23);
 		panel.add(buttonCreate);
 		buttonCreate.addActionListener(new ActionListener() {
@@ -115,7 +115,7 @@ public class FormTractor {
 		});
 		buttonUp.setIcon(new ImageIcon("E:\\\\Java-lab1\\\\lab_Java\\\\Resources\\Up.png"));
 		
-		JButton button = new JButton("РЎРѕР·РґР°С‚СЊ С‚СЂР°РєС‚РѕСЂ");
+		JButton button = new JButton("Создать трактор");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Random rnd = new Random();

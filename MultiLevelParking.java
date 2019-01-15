@@ -3,8 +3,7 @@ import java.util.ArrayList;
 public class MultiLevelParking {
 
 	ArrayList<Parking<ITransport>> parkingStages;
-	
-	//Коллоичество мест на уровне
+
 	private final int countPlaces = 20;
     public MultiLevelParking(int countStages, int pictureWidth, int pictureHeight)
     {
